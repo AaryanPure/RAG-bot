@@ -36,7 +36,8 @@ export default function ChatInterface() {
 
       try {
         setUploadStatus('Uploading...');
-        const response = await axios.post('/api/upload', formData, {
+        const apiUrl = import.meta.env.VITE_API_URL || '/api';
+        const response = await axios.post(`${apiUrl}/upload`, formData, {
           headers: { 'Content-Type': 'multipart/form-data' }
         });
         console.log('Upload response:', response.data);
@@ -59,7 +60,8 @@ export default function ChatInterface() {
     setIsLoading(true);
 
     try {
-      const response = await axios.post('/api/chat', {
+      const apiUrl = import.meta.env.VITE_API_URL || '/api';
+      const response = await axios.post(`${apiUrl}/chat`, {
         query: userMessage.content,
         api_key: apiKey || undefined,
         provider: 'groq',

@@ -139,6 +139,54 @@ Services:
 - Backend: `http://localhost:8000`
 - Frontend: `http://localhost:5173`
 
+## Render Deployment (Recommended - Free Tier)
+
+### Automatic Deployment
+
+1. **Push to GitHub** (already done ✅)
+   
+2. **Sign up at [Render.com](https://render.com/)**
+   - Use your GitHub account to sign in
+
+3. **Create New Blueprint**
+   - Click "New +" → "Blueprint"
+   - Connect your GitHub repository: `AaryanPure/RAG-bot`
+   - Render will automatically detect `render.yaml`
+
+4. **Configure Environment Variables**
+   - For `rag-bot-backend` service, add:
+     ```
+     GROQ_API_KEY=gsk_your_groq_api_key_here
+     ```
+
+5. **Deploy**
+   - Click "Apply" and Render will deploy both services automatically
+   - Backend will be at: `https://rag-bot-backend.onrender.com`
+   - Frontend will be at: `https://rag-bot-frontend.onrender.com`
+
+### Free Tier Limits
+- 750 hours/month per service
+- Services spin down after 15 minutes of inactivity
+- First request after spin-down may take 30-60 seconds
+
+### Alternative: Manual Deployment on Render
+
+If Blueprint doesn't work:
+
+1. **Deploy Backend:**
+   - New Web Service → Connect GitHub repo
+   - Root Directory: `backend`
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+   - Add environment variable: `GROQ_API_KEY`
+
+2. **Deploy Frontend:**
+   - New Web Service → Connect GitHub repo
+   - Root Directory: `frontend`
+   - Build Command: `npm install && npm run build`
+   - Start Command: `npm install -g serve && serve -s dist -p $PORT`
+   - Add environment variable: `VITE_API_URL` = `<your-backend-url>`
+
 ## Railway Deployment
 
 ### Setup
