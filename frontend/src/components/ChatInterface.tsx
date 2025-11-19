@@ -14,7 +14,6 @@ export default function ChatInterface() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [apiKey, setApiKey] = useState('');
-  const [files, setFiles] = useState<FileList | null>(null);
   const [uploadStatus, setUploadStatus] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +27,6 @@ export default function ChatInterface() {
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
-      setFiles(e.target.files);
       const formData = new FormData();
       for (let i = 0; i < e.target.files.length; i++) {
         formData.append('files', e.target.files[i]);

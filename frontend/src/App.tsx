@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Background from './components/ShaderBackground';
 import ChatInterface from './components/ChatInterface';
 
