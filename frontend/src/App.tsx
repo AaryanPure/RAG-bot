@@ -1,3 +1,4 @@
+// RAG Chatbot Frontend
 import { useState, useEffect } from 'react';
 import Background from './components/ShaderBackground';
 import ChatInterface from './components/ChatInterface';
