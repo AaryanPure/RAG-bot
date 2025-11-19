@@ -1,0 +1,11 @@
+streamlit
+numpy
+PyPDF2
+python-docx
+openai
+google-generativeai
+transformers
+torch
+sentence-transformers
+requests
+
